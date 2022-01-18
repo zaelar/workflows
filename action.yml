@@ -5,5 +5,5 @@ runs:
   using: "composite"
   steps:
       - name: Hello World
-        run: echo Hello, wordle!
+        run: python --version
         shell: bash
