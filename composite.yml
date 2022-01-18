@@ -1,0 +1,8 @@
+name: "Run Pipes"
+description: "All the WinPipes"
+
+runs:
+  using: "composite"
+  steps:
+      - name: Hello World
+        run: echo Hello, wordle!
