@@ -6,3 +6,4 @@ runs:
   steps:
       - name: Hello World
         run: echo Hello, wordle!
+        shell: bash
