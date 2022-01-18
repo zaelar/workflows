@@ -5,4 +5,5 @@ runs:
   using: "composite"
   steps:
       - name: Hello World
-        run: echo Hello, wordle!
+        shell: bash
+        run: echo Hello, matey!
