@@ -1,5 +1,5 @@
 
-name: CI
+name: Shedule
 
 on:
   workflow_dispatch:
