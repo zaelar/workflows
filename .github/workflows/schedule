@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-    - uses: reuse@main
+    - uses: zaelar/workflows/.github/workflows/reuse.yml@main
       with:
         foo: "bar"
