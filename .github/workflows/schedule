@@ -1,0 +1,8 @@
+jobs:
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - uses: reuse@main
+      with:
+        foo: "bar"
