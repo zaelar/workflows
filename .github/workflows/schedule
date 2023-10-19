@@ -1,3 +1,8 @@
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron:  'H/4 * * * *'
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
