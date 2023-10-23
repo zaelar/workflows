@@ -5,12 +5,13 @@ on:
   workflow_dispatch:
   schedule:
     - cron:  '*/15 * * * *'
-
+permissions:
+  actions: write
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
       - env:
-          GH_TOKEN: ${{ secrets.MY_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run reuse.yml -f foo=randomBlah
