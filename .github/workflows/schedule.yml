@@ -8,6 +8,9 @@ on:
 
 jobs:
   reusable_workflow_job:
-    uses: zaelar/workflows/.github/workflows/reuse.yml@main
-    with:
-        foo: "bar"
+    runs-on: ubuntu
+    steps:
+    - env:
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+    - run:
+        echo gh workflow run reuse.yml
