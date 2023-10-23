@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron:  '*/15 * * * *'
-permissions:
-  actions: write
+# permissions:
+#  actions: write
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
