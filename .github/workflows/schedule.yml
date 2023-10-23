@@ -15,8 +15,9 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        set -x
         currentHour=$(date "+%H")
-        jobDir="schedule/${currentHour}"
+        jobDir="schedules/${currentHour}"
         if [ -d "${jobDir}" ] ; then
           echo "Running jobs in ${jobDir}"
           for job in $(ls -1 ${jobDir}/*.json); do
