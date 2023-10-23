@@ -1,10 +1,9 @@
-
 name: Shedule
 
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '*/15 * * * *'
+    - cron: '*/15 * * * *'
 # permissions:
 #  actions: write
 jobs:
@@ -15,4 +14,12 @@ jobs:
     - env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        currentHour=$(date "+%H")
+        jobDir="schedule/${currentHour}"
+        if [ -d "${jobDir}" ] ] ; then
+          echo "Running jobs in ${jobDir}"
+          for job in $(ls -1 ${jobDir}/*.json); do
+          echo "Executing schedule with ${job}"
+          done
+        fi
         gh workflow run .github/workflows/reuse.yml -f foo=randomBlah
