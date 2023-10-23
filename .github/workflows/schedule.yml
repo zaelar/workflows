@@ -22,6 +22,6 @@ jobs:
           echo "Running jobs in ${jobDir}"
           for job in $(ls -1 ${jobDir}/*.json); do
           echo "Executing schedule with ${job}"
-          cat "${jobDir}/${job}" | gh workflow run .github/workflows/reuse.yml --json 
+          cat "${job}" | gh workflow run .github/workflows/reuse.yml --json 
           done
         fi
