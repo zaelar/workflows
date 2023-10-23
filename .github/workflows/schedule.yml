@@ -13,4 +13,4 @@ jobs:
       - env:
           GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         run: |
-          echo gh workflow run reuse.yml
+          gh workflow run reuse.yml -f foo=randomBlah
