@@ -17,11 +17,17 @@ jobs:
       run: |
         set -x
         currentHour=$(date "+%H")
-        jobDir="schedules/${currentHour}"
-        if [ -d "${jobDir}" ] ; then
+        dayOfWeek=$(date "+%w)
+        if [ -d "schedules/all/${currentHour}" ] ; then
           echo "Running jobs in ${jobDir}"
-          for job in $(ls -1 ${jobDir}/*.json); do
-          echo "Executing schedule with ${job}"
-          cat "${job}" | gh workflow run .github/workflows/reuse.yml --json 
+          for job in $(ls -1 schedules/all/${currentHour}/*.json ); do
+            echo "Executing schedule with ${job}"
+            cat "${job}" | gh workflow run .github/workflows/reuse.yml --json 
+          done
+        if [ -d "schedules/${dayOfWeek}/${currentHour}" ] ; then
+          echo "Running jobs in ${jobDir}"
+          for job in $(ls -1 schedules/${dayOfWeek}/${currentHour}/*.json ); do
+            echo "Executing schedule with ${job}"
+            cat "${job}" | gh workflow run .github/workflows/reuse.yml --json 
           done
         fi
