@@ -24,6 +24,7 @@ jobs:
             echo "Executing schedule with ${job}"
             cat "${job}" | gh workflow run .github/workflows/reuse.yml --json 
           done
+        fi
         if [ -d "schedules/${dayOfWeek}/${currentHour}" ] ; then
           echo "Running jobs in ${jobDir}"
           for job in $(ls -1 schedules/${dayOfWeek}/${currentHour}/*.json ); do
