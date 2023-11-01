@@ -17,7 +17,7 @@ jobs:
       run: |
         set -x
         currentHour=$(date "+%H")
-        dayOfWeek=$(date "+%w)
+        dayOfWeek=$(date "+%w")
         if [ -d "schedules/all/${currentHour}" ] ; then
           echo "Running jobs in ${jobDir}"
           for job in $(ls -1 schedules/all/${currentHour}/*.json ); do
