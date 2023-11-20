@@ -41,6 +41,9 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo Hello, ${{ inputs.foo }}
+          echo "#Job Summary" >> $GITHUB_STEP_SUMMARY
+          echo "BuildNo: ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
