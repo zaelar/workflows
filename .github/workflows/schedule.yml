@@ -14,7 +14,7 @@ jobs:
     - name: Run scheduled jobs
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        eventp: "Hello"
+        eventp: "${{ github.event }}"
       run: |
         set -x
         currentHour=$(date "+%H")
