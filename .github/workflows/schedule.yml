@@ -2,8 +2,7 @@ name: Shedule
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '15 * * * *'
+
 # permissions:
 #  actions: write
 jobs:
@@ -13,24 +12,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Run scheduled jobs
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         eventp: "ss"
       run: |
         set -x
         echo ${{ toJson(github) }}
-        currentHour=$(date "+%H")
-        dayOfWeek=$(date "+%w")
-        if [ -d "schedules/all/${currentHour}" ] ; then
-          echo "Running jobs in ${jobDir}"
-          for job in $(ls -1 schedules/all/${currentHour}/*.json ); do
-            echo "Executing schedule with ${job}"
-            cat "${job}" | gh workflow run .github/workflows/reuse.yml --json 
-          done
-        fi
-        if [ -d "schedules/${dayOfWeek}/${currentHour}" ] ; then
-          echo "Running jobs in ${jobDir}"
-          for job in $(ls -1 schedules/${dayOfWeek}/${currentHour}/*.json ); do
-            echo "Executing schedule with ${job}"
-            cat "${job}" | gh workflow run .github/workflows/reuse.yml --json 
-          done
-        fi
+
