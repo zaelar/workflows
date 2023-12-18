@@ -2,6 +2,9 @@ name: Shedule
 
 on:
   workflow_dispatch:
+  
+  schedule:
+    cron: '* * * * *'
 
 # permissions:
 #  actions: write
