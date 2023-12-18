@@ -14,9 +14,9 @@ jobs:
     - name: Run scheduled jobs
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_EVENT: ${{ github.event }}
       run: |
         set -x
-        echo "${{ github.event }}"
         currentHour=$(date "+%H")
         dayOfWeek=$(date "+%w")
         if [ -d "schedules/all/${currentHour}" ] ; then
