@@ -18,5 +18,5 @@ jobs:
         eventp: "ss"
       run: |
         set -x
-        echo ${{ toJson(github) }}
+        echo "${{ toJson(github) }}"
 
